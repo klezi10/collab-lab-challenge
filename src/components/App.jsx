@@ -10,6 +10,7 @@ import ImageDetailsPage from './ImageDetailsPage';
 export function App() {
 	const [results, setResults] = useState();
 	const [hide, setHide] = useState(false);
+	const [photoResult, setPhotoResult] = useState();
 
 	function onSearchSubmit(query) {
 		// Search for the users's query.
@@ -27,6 +28,7 @@ export function App() {
 	function showDetails(event) {
 		console.log(event);
 		setHide(true);
+		setPhotoResult(event);
 	}
 
 	return (
@@ -39,6 +41,7 @@ export function App() {
 						<Results
 							key={result.id}
 							id={result.id}
+							image={result.image_id}
 							name={result.artist_title}
 							showDetails={showDetails}
 							title={result.title}
@@ -46,7 +49,7 @@ export function App() {
 					);
 				})
 			) : (
-				<ImageDetailsPage />
+				<ImageDetailsPage image={photoResult} />
 			)}
 			<Footer />
 		</div>

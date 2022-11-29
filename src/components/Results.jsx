@@ -1,9 +1,9 @@
-export default function Results({ id, name, title, showDetails }) {
+export default function Results({ image, name, title, showDetails }) {
 	return (
 		<button
 			className="Results"
 			onClick={() => {
-				showDetails(id);
+				showDetails(image);
 			}}
 		>
 			<h3>Art name: {title}</h3>
