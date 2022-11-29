@@ -31,6 +31,10 @@ export function App() {
 		setPhotoResult(event);
 	}
 
+	function goBack() {
+		setHide(false);
+	}
+
 	return (
 		<div className="App">
 			<h1>TCL Career Lab Art Finder</h1>
@@ -49,7 +53,7 @@ export function App() {
 					);
 				})
 			) : (
-				<ImageDetailsPage image={photoResult} />
+				<ImageDetailsPage goBack={goBack} image={photoResult} />
 			)}
 			<Footer />
 		</div>

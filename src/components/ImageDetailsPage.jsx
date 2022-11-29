@@ -1,7 +1,8 @@
-export default function ImageDetailsPage({ image }) {
+export default function ImageDetailsPage({ image, goBack }) {
 	return (
 		<div className="ImageDetailsPage">
-			{/* <h1>{image}</h1> */}
+			<button onClick={goBack}>Back</button>
+			<br />
 			<img
 				alt="chosen"
 				src={`https://www.artic.edu/iiif/2/${image}/full/843,/0/default.jpg`}
