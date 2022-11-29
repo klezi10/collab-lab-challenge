@@ -5,9 +5,11 @@ import { searchArtworks } from '../utils/api';
 import { SearchForm } from './SearchForm';
 import { Footer } from './Footer';
 import Results from './Results';
+import ImageDetailsPage from './ImageDetailsPage';
 
 export function App() {
 	const [results, setResults] = useState();
+	const [hide, setHide] = useState(false);
 
 	function onSearchSubmit(query) {
 		// Search for the users's query.
@@ -22,19 +24,30 @@ export function App() {
 		});
 	}
 
+	function showDetails(event) {
+		console.log(event);
+		setHide(true);
+	}
+
 	return (
 		<div className="App">
 			<h1>TCL Career Lab Art Finder</h1>
 			<SearchForm onSearchSubmit={onSearchSubmit} />
-			{results?.map((result) => {
-				return (
-					<Results
-						key={result.id}
-						name={result.artist_title}
-						title={result.title}
-					/>
-				);
-			})}
+			{!hide ? (
+				results?.map((result) => {
+					return (
+						<Results
+							key={result.id}
+							id={result.id}
+							name={result.artist_title}
+							showDetails={showDetails}
+							title={result.title}
+						/>
+					);
+				})
+			) : (
+				<ImageDetailsPage />
+			)}
 			<Footer />
 		</div>
 	);
