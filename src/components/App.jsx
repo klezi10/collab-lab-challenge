@@ -20,15 +20,16 @@ export function App() {
 		// our UI, we need to make real requests!
 		// @see: ./src/uitls/api.js
 		searchArtworks(query).then((json) => {
-			console.log(json.data);
 			setResults(json.data);
 		});
 	}
 
-	function showDetails(event) {
-		console.log(event);
+	function showDetails({ image, altText }) {
 		setHide(true);
-		setPhotoResult(event);
+		setPhotoResult({
+			image: image,
+			altText: altText,
+		});
 	}
 
 	function goBack() {
