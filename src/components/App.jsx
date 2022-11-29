@@ -39,21 +39,24 @@ export function App() {
 	return (
 		<div className="App">
 			<h1>TCL Career Lab Art Finder</h1>
-			<SearchForm onSearchSubmit={onSearchSubmit} />
+
 			{!hide ? (
-				results?.map((result) => {
-					return (
-						<Results
-							key={result.id}
-							altText={result.thumbnail.alt_text}
-							id={result.id}
-							image={result.image_id}
-							name={result.artist_title}
-							showDetails={showDetails}
-							title={result.title}
-						/>
-					);
-				})
+				<>
+					<SearchForm onSearchSubmit={onSearchSubmit} />
+					{results?.map((result) => {
+						return (
+							<Results
+								key={result.id}
+								altText={result.thumbnail.alt_text}
+								id={result.id}
+								image={result.image_id}
+								name={result.artist_title}
+								showDetails={showDetails}
+								title={result.title}
+							/>
+						);
+					})}
+				</>
 			) : (
 				<ImageDetailsPage
 					altText={photoResult.altText}
