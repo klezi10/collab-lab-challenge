@@ -43,19 +43,21 @@ export function App() {
 			{!hide ? (
 				<>
 					<SearchForm onSearchSubmit={onSearchSubmit} />
-					{results?.map((result) => {
-						return (
-							<Results
-								key={result.id}
-								altText={result.thumbnail.alt_text}
-								id={result.id}
-								image={result.image_id}
-								name={result.artist_title}
-								showDetails={showDetails}
-								title={result.title}
-							/>
-						);
-					})}
+					<ul>
+						{results?.map((result) => {
+							return (
+								<Results
+									key={result.id}
+									altText={result.thumbnail.alt_text}
+									id={result.id}
+									image={result.image_id}
+									name={result.artist_title}
+									showDetails={showDetails}
+									title={result.title}
+								/>
+							);
+						})}
+					</ul>
 				</>
 			) : (
 				<ImageDetailsPage
